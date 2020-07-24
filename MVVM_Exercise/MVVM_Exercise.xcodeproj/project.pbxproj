@@ -21,7 +21,6 @@
 		3870171924C99B85001F8768 /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870171824C99B85001F8768 /* UserListCell.swift */; };
 		38A451D924C9DCA9003147FB /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A451D824C9DCA9003147FB /* UserDetailsViewController.swift */; };
 		38A451DC24C9E1FA003147FB /* UserDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A451DB24C9E1FA003147FB /* UserDetailsViewModel.swift */; };
-		38A451DE24C9E2CB003147FB /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A451DD24C9E2CB003147FB /* BaseViewModel.swift */; };
 		38A451E024CAC34D003147FB /* UserViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A451DF24CAC34D003147FB /* UserViewModelTest.swift */; };
 		38A451E224CAD6E4003147FB /* UserDetailsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A451E124CAD6E4003147FB /* UserDetailsViewModelTest.swift */; };
 /* End PBXBuildFile section */
@@ -55,7 +54,6 @@
 		3870171824C99B85001F8768 /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
 		38A451D824C9DCA9003147FB /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		38A451DB24C9E1FA003147FB /* UserDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModel.swift; sourceTree = "<group>"; };
-		38A451DD24C9E2CB003147FB /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		38A451DF24CAC34D003147FB /* UserViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelTest.swift; sourceTree = "<group>"; };
 		38A451E124CAD6E4003147FB /* UserDetailsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModelTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,7 +178,6 @@
 			children = (
 				3870170C24C9456B001F8768 /* UsersViewModel.swift */,
 				38A451DB24C9E1FA003147FB /* UserDetailsViewModel.swift */,
-				38A451DD24C9E2CB003147FB /* BaseViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -287,7 +284,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3870171924C99B85001F8768 /* UserListCell.swift in Sources */,
-				38A451DE24C9E2CB003147FB /* BaseViewModel.swift in Sources */,
 				387016EF24C9450B001F8768 /* UsersViewController.swift in Sources */,
 				38A451DC24C9E1FA003147FB /* UserDetailsViewModel.swift in Sources */,
 				3870170D24C9456B001F8768 /* UsersViewModel.swift in Sources */,

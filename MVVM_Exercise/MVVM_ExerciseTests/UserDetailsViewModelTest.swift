@@ -59,16 +59,8 @@ class UserDetailsViewModelTest: MVVM_ExerciseTests {
     
     func testGetImage() {
         XCTAssertNotNil(sut)
-        XCTAssertEqual("fav", sut!.getImageName())
+        XCTAssertEqual("suit.heart", sut!.getImageName())
         sut!.updateFavoriteState()
-        XCTAssertEqual("Nfav", sut!.getImageName())
+        XCTAssertEqual("suit.heart.fill", sut!.getImageName())
     }
-    
-//    func testUpdateFavoriteState() {
-//        XCTAssertNotNil(sut)
-//        XCTAssertEqual(false, sut!.isFavorite())
-//
-//        XCTAssertEqual(true, sut!.isFavorite())
-//    }
-    
 }

@@ -68,12 +68,14 @@ class UserDetailsViewController: UIViewController {
         phoneLabel.text = viewModel.getPhone()
         companyLabel.text = viewModel.getCompanyName()
         companyDescriptionLabel.text = viewModel.getCompanyDescription()
-        let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 30), scale: .medium)
+        let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 40), scale: .medium)
         let image = UIImage(systemName: viewModel.getImageName(), withConfiguration: config)
         favoriteButton.setImage(image, for: .normal)
+        //favoriteButton.setBackgroundImage(image, for: .normal)
     }
     
     deinit {
-        debugPrint("User Details controller de-initialized")
+        Log.event("User Details controller de-initialized", .info)
+
     }
 }

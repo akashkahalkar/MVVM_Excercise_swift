@@ -12,10 +12,10 @@ import XCTest
 
 class UserViewModelTest: MVVM_ExerciseTests {
 
-    var sut: UserViewModel?
+    var sut: UserListViewModel?
     
     override func setUp() {
-        sut = UserViewModel()
+        sut = UserListViewModel()
     }
 
     override func tearDown() {

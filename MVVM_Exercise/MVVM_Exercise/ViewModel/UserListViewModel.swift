@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserViewModel {
+class UserListViewModel {
     
     private var users: [User]?
     
@@ -23,7 +23,7 @@ class UserViewModel {
     /// Toggle favorite state for given user id
     /// - Parameter id: id of the user to be updated
     func updateFavoriteState(id: Int) -> Bool {
-        if let index = users?.firstIndex(where: {$0.id == id}) {
+        if let index = getIndex(for: id) {
             users?[index].toggleFavorite()
             return true
         }
@@ -35,6 +35,18 @@ class UserViewModel {
             return users[index]
         }
         return nil
+    }
+    
+    func getIndex(for id: Int) -> Int? {
+        if let index = users?.firstIndex(where: {id == $0.id}) {
+            return index
+        }
+        return nil
+    }
+    
+    
+    func getUserRowViewModelList(at index: Int) -> UserListRowViewModel? {
+        return UserListRowViewModel(getUser(at: index))
     }
     
     func setUser(users: [User]) {
@@ -61,7 +73,7 @@ class UserViewModel {
     
     func fetchUsers(completion: @escaping(NetworkError?) -> Void) {
         
-        NetworkManager.shared.get(url: URLEndpoints.getUsers, completion: { result in
+        NetworkManager.shared.get(modelType: [User].self, url: URLEndpoints.getUsers, completion: { result in
             
             switch result {
                 

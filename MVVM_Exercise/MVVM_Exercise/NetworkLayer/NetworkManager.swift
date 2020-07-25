@@ -24,10 +24,10 @@ class NetworkManager {
     /// - Parameters:
     ///   - url: url string
     ///   - completion: Return list of users on success or respective network error on fail
-    func get(url: String, completion: @escaping(Result<[User], NetworkError>) -> Void) {
-        
+    func get<T: Decodable>(modelType: T.Type, url: String, completion: @escaping(Result<T, NetworkError>) -> Void) {
+        Log.event("Network request initiated with Url: \(url)", .info)
         guard let url = URL(string: url) else {
-            debugPrint("error while creating url")
+            Log.event("error while creating url", .error)
             completion(.failure(.emptyUrl))
             return
         }
@@ -35,29 +35,38 @@ class NetworkManager {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             guard let data = data, error == nil else {
+                let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
+                Log.event("Network Request failed. Status code: \(statusCode)", .error)
                 completion(.failure(.requestFailed))
                 return
             }
+            Log.event("Network Request successful", .info)
             do {
-                
-                let users = try JSONDecoder().decode([User].self, from: data)
-                completion(.success(users))
+                let result = try JSONDecoder().decode(modelType.self, from: data)
+                completion(.success(result))
                 
             } catch let DecodingError.keyNotFound(key, context) {
-                print("Key '\(key)' not found:", context.debugDescription)
-                print("codingPath:", context.codingPath)
+                Log.event("Key '\(key)' not found: \(context.debugDescription)", .error)
+                Log.event("codingPath: \(context.codingPath)", .error)
                 completion(.failure(.decodingError))
             } catch let DecodingError.valueNotFound(value, context) {
-                print("Value '\(value)' not found:", context.debugDescription)
-                print("codingPath:", context.codingPath)
+                Log.event("Value '\(value)' not found: \(context.debugDescription)", .error)
+                Log.event("codingPath: \(context.codingPath)", .error)
                 completion(.failure(.decodingError))
             } catch let DecodingError.typeMismatch(type, context)  {
-                print("TypeR'\(type)' mismatch:", context.debugDescription)
-                print("codingPath:", context.codingPath)
+                Log.event("TypeR'\(type)' mismatch: \(context.debugDescription)", .error)
+                Log.event("codingPath: \(context.codingPath)", .error)
                 completion(.failure(.decodingError))
             } catch {
+                Log.event("Failed with error reason unknown", .error)
                 completion(.failure(.decodingError))
             }
         }.resume()
     }
 }
+
+/*
+ func decode<T>(modelType: T.Type) where T : Decodable {
+     let myStruct = try! JSONDecoder().decode(modelType, from: data!)
+     ...
+ }*/

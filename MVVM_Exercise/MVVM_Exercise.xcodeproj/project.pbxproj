@@ -10,12 +10,12 @@
 		383A436424CB07650065E94C /* NetworkManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383A436324CB07650065E94C /* NetworkManagerTest.swift */; };
 		387016EB24C9450B001F8768 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387016EA24C9450B001F8768 /* AppDelegate.swift */; };
 		387016ED24C9450B001F8768 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387016EC24C9450B001F8768 /* SceneDelegate.swift */; };
-		387016EF24C9450B001F8768 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387016EE24C9450B001F8768 /* UsersViewController.swift */; };
+		387016EF24C9450B001F8768 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387016EE24C9450B001F8768 /* UserListViewController.swift */; };
 		387016F224C9450B001F8768 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 387016F024C9450B001F8768 /* Main.storyboard */; };
 		387016F424C9450E001F8768 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 387016F324C9450E001F8768 /* Assets.xcassets */; };
 		387016F724C9450E001F8768 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 387016F524C9450E001F8768 /* LaunchScreen.storyboard */; };
 		3870170224C9450E001F8768 /* MVVM_ExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870170124C9450E001F8768 /* MVVM_ExerciseTests.swift */; };
-		3870170D24C9456B001F8768 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870170C24C9456B001F8768 /* UsersViewModel.swift */; };
+		3870170D24C9456B001F8768 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870170C24C9456B001F8768 /* UserListViewModel.swift */; };
 		3870171324C9463C001F8768 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870171224C9463C001F8768 /* NetworkManager.swift */; };
 		3870171624C94836001F8768 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870171524C94836001F8768 /* Model.swift */; };
 		3870171924C99B85001F8768 /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870171824C99B85001F8768 /* UserListCell.swift */; };
@@ -23,6 +23,10 @@
 		38A451DC24C9E1FA003147FB /* UserDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A451DB24C9E1FA003147FB /* UserDetailsViewModel.swift */; };
 		38A451E024CAC34D003147FB /* UserViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A451DF24CAC34D003147FB /* UserViewModelTest.swift */; };
 		38A451E224CAD6E4003147FB /* UserDetailsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A451E124CAD6E4003147FB /* UserDetailsViewModelTest.swift */; };
+		38E230DB24CBEC100063C9D5 /* UserListRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E230DA24CBEC100063C9D5 /* UserListRowViewModel.swift */; };
+		38E230DE24CBF94F0063C9D5 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E230DD24CBF94F0063C9D5 /* Logger.swift */; };
+		38E230E024CC00D40063C9D5 /* UserListRowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E230DF24CC00D40063C9D5 /* UserListRowTest.swift */; };
+		38E230E424CC06F10063C9D5 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E230E324CC06F10063C9D5 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +44,7 @@
 		387016E724C9450B001F8768 /* MVVM_Exercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM_Exercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		387016EA24C9450B001F8768 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		387016EC24C9450B001F8768 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		387016EE24C9450B001F8768 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		387016EE24C9450B001F8768 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		387016F124C9450B001F8768 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		387016F324C9450E001F8768 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		387016F624C9450E001F8768 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,7 +52,7 @@
 		387016FD24C9450E001F8768 /* MVVM_ExerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVVM_ExerciseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3870170124C9450E001F8768 /* MVVM_ExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVM_ExerciseTests.swift; sourceTree = "<group>"; };
 		3870170324C9450E001F8768 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3870170C24C9456B001F8768 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		3870170C24C9456B001F8768 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		3870171224C9463C001F8768 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3870171524C94836001F8768 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3870171824C99B85001F8768 /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
@@ -56,6 +60,10 @@
 		38A451DB24C9E1FA003147FB /* UserDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModel.swift; sourceTree = "<group>"; };
 		38A451DF24CAC34D003147FB /* UserViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelTest.swift; sourceTree = "<group>"; };
 		38A451E124CAD6E4003147FB /* UserDetailsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModelTest.swift; sourceTree = "<group>"; };
+		38E230DA24CBEC100063C9D5 /* UserListRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListRowViewModel.swift; sourceTree = "<group>"; };
+		38E230DD24CBF94F0063C9D5 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		38E230DF24CC00D40063C9D5 /* UserListRowTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListRowTest.swift; sourceTree = "<group>"; };
+		38E230E324CC06F10063C9D5 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,10 +105,12 @@
 		387016E924C9450B001F8768 /* MVVM_Exercise */ = {
 			isa = PBXGroup;
 			children = (
+				38E230DC24CBF9340063C9D5 /* general */,
 				38A451DA24C9E1DE003147FB /* ViewModel */,
 				3870171424C9481E001F8768 /* Models */,
 				3870171124C94620001F8768 /* Appdelegate */,
 				3870171024C94612001F8768 /* NetworkLayer */,
+				3870171724C99B65001F8768 /* cell */,
 				3870170E24C94591001F8768 /* Controller */,
 				3870170F24C945B4001F8768 /* Storyboard */,
 				387016F324C9450E001F8768 /* Assets.xcassets */,
@@ -112,6 +122,7 @@
 		3870170024C9450E001F8768 /* MVVM_ExerciseTests */ = {
 			isa = PBXGroup;
 			children = (
+				38E230DF24CC00D40063C9D5 /* UserListRowTest.swift */,
 				383A436324CB07650065E94C /* NetworkManagerTest.swift */,
 				38A451E124CAD6E4003147FB /* UserDetailsViewModelTest.swift */,
 				38A451DF24CAC34D003147FB /* UserViewModelTest.swift */,
@@ -124,8 +135,7 @@
 		3870170E24C94591001F8768 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3870171724C99B65001F8768 /* cells */,
-				387016EE24C9450B001F8768 /* UsersViewController.swift */,
+				387016EE24C9450B001F8768 /* UserListViewController.swift */,
 				38A451D824C9DCA9003147FB /* UserDetailsViewController.swift */,
 			);
 			path = Controller;
@@ -165,21 +175,31 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		3870171724C99B65001F8768 /* cells */ = {
+		3870171724C99B65001F8768 /* cell */ = {
 			isa = PBXGroup;
 			children = (
 				3870171824C99B85001F8768 /* UserListCell.swift */,
 			);
-			path = cells;
+			path = cell;
 			sourceTree = "<group>";
 		};
 		38A451DA24C9E1DE003147FB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3870170C24C9456B001F8768 /* UsersViewModel.swift */,
+				3870170C24C9456B001F8768 /* UserListViewModel.swift */,
 				38A451DB24C9E1FA003147FB /* UserDetailsViewModel.swift */,
+				38E230DA24CBEC100063C9D5 /* UserListRowViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		38E230DC24CBF9340063C9D5 /* general */ = {
+			isa = PBXGroup;
+			children = (
+				38E230DD24CBF94F0063C9D5 /* Logger.swift */,
+				38E230E324CC06F10063C9D5 /* String+Extension.swift */,
+			);
+			path = general;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,9 +304,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3870171924C99B85001F8768 /* UserListCell.swift in Sources */,
-				387016EF24C9450B001F8768 /* UsersViewController.swift in Sources */,
+				38E230E424CC06F10063C9D5 /* String+Extension.swift in Sources */,
+				38E230DE24CBF94F0063C9D5 /* Logger.swift in Sources */,
+				387016EF24C9450B001F8768 /* UserListViewController.swift in Sources */,
+				38E230DB24CBEC100063C9D5 /* UserListRowViewModel.swift in Sources */,
 				38A451DC24C9E1FA003147FB /* UserDetailsViewModel.swift in Sources */,
-				3870170D24C9456B001F8768 /* UsersViewModel.swift in Sources */,
+				3870170D24C9456B001F8768 /* UserListViewModel.swift in Sources */,
 				3870171324C9463C001F8768 /* NetworkManager.swift in Sources */,
 				3870171624C94836001F8768 /* Model.swift in Sources */,
 				387016EB24C9450B001F8768 /* AppDelegate.swift in Sources */,
@@ -300,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				383A436424CB07650065E94C /* NetworkManagerTest.swift in Sources */,
+				38E230E024CC00D40063C9D5 /* UserListRowTest.swift in Sources */,
 				3870170224C9450E001F8768 /* MVVM_ExerciseTests.swift in Sources */,
 				38A451E024CAC34D003147FB /* UserViewModelTest.swift in Sources */,
 				38A451E224CAD6E4003147FB /* UserDetailsViewModelTest.swift in Sources */,

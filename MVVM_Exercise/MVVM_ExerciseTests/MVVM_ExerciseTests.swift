@@ -40,9 +40,9 @@ class MVVM_ExerciseTests: XCTestCase {
                         username: "Akashka",
                         email: "akash@email.com",
                         address: address,
-                        phone: "0123456789",
-                        website: "www.akash.com",
+                        phone: "0123456789 x134",
+                        website: "akash.com",
                         company: company)
     }
-
+    
 }

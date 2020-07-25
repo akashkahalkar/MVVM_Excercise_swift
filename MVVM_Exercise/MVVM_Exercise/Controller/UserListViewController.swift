@@ -8,14 +8,14 @@
 
 import UIKit
 
-class UsersViewController: UIViewController {
+class UserListViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var errorLabel: UILabel!
     
-    private let viewModel = UserViewModel()
+    private let viewModel = UserListViewModel()
     
     //MARK: - Override
     
@@ -51,6 +51,7 @@ class UsersViewController: UIViewController {
     }
     
     private func startLoader() {
+        Log.event("Activity indicator started", .info)
         errorLabel.isHidden = true
         activityIndicator.isHidden = false
         tableView.isHidden = true
@@ -58,6 +59,7 @@ class UsersViewController: UIViewController {
     }
     
     private func stopLoader() {
+        Log.event("Activity indicator stopped", .info)
         errorLabel.isHidden = true
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
@@ -65,6 +67,7 @@ class UsersViewController: UIViewController {
     }
     
     private func showErrorLable(message: String) {
+        Log.event("Error label visible", .info)
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
         tableView.isHidden = true
@@ -84,9 +87,7 @@ class UsersViewController: UIViewController {
             DispatchQueue.main.async {
                 self.present(userDetailsVC, animated: true, completion: nil)
             }
-            
         }
-        
     }
     
     /// UpdateFavState updates the favorite state for user
@@ -95,33 +96,41 @@ class UsersViewController: UIViewController {
     /// - Parameter id: id of the user for which we have to update the state
     private func updateFavState(for id: Int) {
         if viewModel.updateFavoriteState(id: id) {
+            Log.event("Updated favorite state for user with id: \(id)", .info)
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                
+                if let row = self.viewModel.getIndex(for: id) {
+                    let indexPath = IndexPath(row: row, section: 0)
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
+                }
             }
         }
     }
     
     deinit {
-        debugPrint("User List controller de-initialized")
+        Log.event("User List controller de-initialized", .info)
     }
 }
 
 //MARK: - Tableview Delegates
 
-extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
+extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.tableRowCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "UserListCell") as? UserListCell, let user = viewModel.getUser(at: indexPath.row) {
+        if
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserListCell") as? UserListCell,
+            let rowViewModel = viewModel.getUserRowViewModelList(at: indexPath.row) {
             
-            cell.setupUserInfo(id: user.id, name: user.name,
-                               phone: user.phone,
-                               company: user.company.name,
-                               website: user.website,
-                               imageName: user.fav ? "suit.heart.fill" : "suit.heart")
+            cell.setupUserInfo(id: rowViewModel.getUserId(),
+                               name: rowViewModel.getcompanyName(),
+                               phone: rowViewModel.getUserPhone(),
+                               company: rowViewModel.getcompanyName(),
+                               website: rowViewModel.getWebsite(),
+                               imageName: rowViewModel.getFavImage())
             
             //bind favorite button from cell to the viewmodel to update underlying data
             cell.didTappedFavourite = {[weak self] id in
@@ -146,8 +155,9 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: - UserDetailsHandler delegate comformation
 
-extension UsersViewController: UserDetailsHandler {
+extension UserListViewController: UserDetailsHandler {
     func userfavoriteStateChanged(id: Int) {
+        Log.event("received UserDetailsHandler delegate response", .info)
         updateFavState(for: id)
     }
 }

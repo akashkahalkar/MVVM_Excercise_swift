@@ -23,7 +23,7 @@ class UserListRowTest: MVVM_ExerciseTests {
 
     func testgetUserName() {
         XCTAssertNotNil(sut)
-        XCTAssertEqual("Akash", sut!.getUserName())
+        XCTAssertEqual("Akash", sut!.getName())
     }
     
     func testgetUserPhone() {
@@ -44,9 +44,9 @@ class UserListRowTest: MVVM_ExerciseTests {
     
     func testgetFavImage() {
         XCTAssertNotNil(sut)
-        XCTAssertEqual("suit.heart", sut!.getFavImage())
+        XCTAssertEqual("star", sut!.getFavImage())
         sut!.user.toggleFavorite()
-        XCTAssertEqual("suit.heart.fill", sut!.getFavImage())
+        XCTAssertEqual("star.fill", sut!.getFavImage())
     }
 
 }

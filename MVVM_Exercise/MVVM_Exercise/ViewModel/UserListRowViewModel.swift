@@ -21,7 +21,7 @@ struct UserListRowViewModel {
         return user.id
     }
     
-    func getUserName() -> String {
+    func getName() -> String {
         return user.name
     }
     
@@ -41,7 +41,7 @@ struct UserListRowViewModel {
     }
     
     func getFavImage() -> String {
-        user.fav ? "suit.heart.fill" : "suit.heart"
+        user.fav ? "star.fill" : "star"
     }
 }
 

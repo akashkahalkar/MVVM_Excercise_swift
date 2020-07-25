@@ -126,7 +126,7 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
             let rowViewModel = viewModel.getUserRowViewModelList(at: indexPath.row) {
             
             cell.setupUserInfo(id: rowViewModel.getUserId(),
-                               name: rowViewModel.getcompanyName(),
+                               name: rowViewModel.getName(),
                                phone: rowViewModel.getUserPhone(),
                                company: rowViewModel.getcompanyName(),
                                website: rowViewModel.getWebsite(),

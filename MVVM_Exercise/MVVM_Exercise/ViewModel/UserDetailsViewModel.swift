@@ -48,7 +48,7 @@ class UserDetailsViewModel {
     }
     
     func getImageName() -> String {
-        return user.fav ?  "suit.heart.fill" : "suit.heart"
+        return user.fav ?  "star.fill" : "star"
     }
     
     func updateFavoriteState() {

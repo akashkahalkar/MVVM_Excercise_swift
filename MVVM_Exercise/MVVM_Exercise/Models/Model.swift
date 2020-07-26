@@ -9,6 +9,10 @@
 
 import Foundation
 
+protocol UserStateChangeHandler: class {
+    func userfavoriteStateChanged(index: Int)
+}
+
 struct User: Decodable {
     let id: Int
     let name: String

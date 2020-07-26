@@ -14,7 +14,7 @@ class UserDetailsViewModelTest: MVVM_ExerciseTests {
     var sut: UserDetailsViewModel?
     
     override func setUp() {
-        sut = UserDetailsViewModel(user: getTestUser())
+        sut = UserDetailsViewModel(user: getTestUser(), index: 0)
     }
     
     override func tearDown() {
@@ -59,8 +59,8 @@ class UserDetailsViewModelTest: MVVM_ExerciseTests {
     
     func testGetImage() {
         XCTAssertNotNil(sut)
-        XCTAssertEqual("suit.heart", sut!.getImageName())
+        XCTAssertEqual("star", sut!.getImageName())
         sut!.updateFavoriteState()
-        XCTAssertEqual("suit.heart.fill", sut!.getImageName())
+        XCTAssertEqual("star.fill", sut!.getImageName())
     }
 }

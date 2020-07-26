@@ -14,7 +14,7 @@ class UserListRowTest: MVVM_ExerciseTests {
     var sut: UserListRowViewModel?
     
     override func setUp() {
-        sut = UserListRowViewModel(getTestUser())
+        sut = UserListRowViewModel(getTestUser(), with: 0)
     }
 
     override func tearDown() {

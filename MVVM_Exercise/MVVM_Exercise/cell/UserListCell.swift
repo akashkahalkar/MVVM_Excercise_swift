@@ -27,8 +27,8 @@ class UserListCell: UITableViewCell {
         didTappedFavourite?(tag)
     }
     
-    func setupUserInfo(id: Int, name: String, phone: String, company: String, website: String, imageName: String) {
-        self.tag = id
+    func setupUserInfo(index: Int, name: String, phone: String, company: String, website: String, imageName: String) {
+        self.tag = index
         nameLabel.text = name
         phoneLabel.text = phone
         companyLabel.text = company
@@ -38,6 +38,5 @@ class UserListCell: UITableViewCell {
         DispatchQueue.main.async {
             self.favButton.setImage(favImage, for: .normal)
         }
-        
     }
 }

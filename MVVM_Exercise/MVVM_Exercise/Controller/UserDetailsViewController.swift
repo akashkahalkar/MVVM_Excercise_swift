@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol UserDetailsHandler: class {
-    func userfavoriteStateChanged(id: Int)
-}
-
 class UserDetailsViewController: UIViewController {
     
     private var viewModel: UserDetailsViewModel?
@@ -23,18 +19,19 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var companyDescriptionLabel: UILabel!
     
-    weak var delegate: UserDetailsHandler?
+    weak var delegate: UserStateChangeHandler?
     
     //MARK: - Initializer
     
-    func initialize(user: User) {
-        viewModel = UserDetailsViewModel(user: user)
+    func initialize(user: User, index: Int) {
+        viewModel = UserDetailsViewModel(user: user, index: index)
     }
     
     //MARK: - Override
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +49,7 @@ class UserDetailsViewController: UIViewController {
         if let vm = viewModel {
             vm.updateFavoriteState()
             setScreenValues()
-            delegate?.userfavoriteStateChanged(id: vm.getUserId())
+            delegate?.userfavoriteStateChanged(index: vm.getIndex())
         }
     }
     
@@ -62,20 +59,20 @@ class UserDetailsViewController: UIViewController {
         guard let viewModel = viewModel else {
             return
         }
-        nameLabel.text = viewModel.getName()
-        userNameLabel.text = viewModel.getUserName()
-        addressLabel.text = viewModel.getAddress()
-        phoneLabel.text = viewModel.getPhone()
-        companyLabel.text = viewModel.getCompanyName()
-        companyDescriptionLabel.text = viewModel.getCompanyDescription()
-        let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 40), scale: .medium)
-        let image = UIImage(systemName: viewModel.getImageName(), withConfiguration: config)
-        favoriteButton.setImage(image, for: .normal)
-        //favoriteButton.setBackgroundImage(image, for: .normal)
+        DispatchQueue.main.async {
+            self.nameLabel.text = viewModel.getName()
+            self.userNameLabel.text = viewModel.getUserName()
+            self.addressLabel.text = viewModel.getAddress()
+            self.phoneLabel.text = viewModel.getPhone()
+            self.companyLabel.text = viewModel.getCompanyName()
+            self.companyDescriptionLabel.text = viewModel.getCompanyDescription()
+            let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 40), scale: .medium)
+            let image = UIImage(systemName: viewModel.getImageName(), withConfiguration: config)
+            self.favoriteButton.setImage(image, for: .normal)
+        }
     }
     
     deinit {
         Log.event("User Details controller de-initialized", .info)
-
     }
 }

@@ -12,19 +12,10 @@ class UserListViewModel {
     
     private var users: [User]?
     
-    func toggleFavorite(index: Int) -> Bool {
-        if var users = users, users.indices.contains(index) {
-            users[index].toggleFavorite()
-            return true
-        }
-        return false
-    }
-    
-    /// Toggle favorite state for given user id
-    /// - Parameter id: id of the user to be updated
-    func updateFavoriteState(id: Int) -> Bool {
-        if let index = getIndex(for: id) {
-            users?[index].toggleFavorite()
+    func updateFavoriteStateForUser(at index: Int) -> Bool {
+        if var user = getUser(at: index) {
+            user.toggleFavorite()
+            users?[index] = user
             return true
         }
         return false
@@ -46,7 +37,7 @@ class UserListViewModel {
     
     
     func getUserRowViewModelList(at index: Int) -> UserListRowViewModel? {
-        return UserListRowViewModel(getUser(at: index))
+        return UserListRowViewModel(getUser(at: index), with: index)
     }
     
     func setUser(users: [User]) {

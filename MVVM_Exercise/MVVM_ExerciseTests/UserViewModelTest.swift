@@ -36,8 +36,8 @@ class UserViewModelTest: MVVM_ExerciseTests {
     
     func testToggleFavorite() {
         sut?.setUser(users: [getTestUser()])
-        XCTAssertFalse(sut!.toggleFavorite(index: 1))
-        XCTAssertTrue(sut!.toggleFavorite(index: 0))
+        XCTAssertFalse(sut!.updateFavoriteStateForUser(at: 1))
+        XCTAssertTrue(sut!.updateFavoriteStateForUser(at: 0))
     }
     
     func testGetUser() {
@@ -58,8 +58,8 @@ class UserViewModelTest: MVVM_ExerciseTests {
     func testUpdateFavoriteState() {
         sut?.setUser(users: [getTestUser()])
         let actualState = sut!.getUser(at: 0)!.fav
-        XCTAssertFalse(sut!.updateFavoriteState(id: 2))
-        XCTAssertTrue(sut!.updateFavoriteState(id: 1))
+        XCTAssertFalse(sut!.updateFavoriteStateForUser(at: 2))
+        XCTAssertTrue(sut!.updateFavoriteStateForUser(at: 0))
         let changedState = sut!.getUser(at: 0)!.fav
         
         XCTAssertNotEqual(actualState, changedState)

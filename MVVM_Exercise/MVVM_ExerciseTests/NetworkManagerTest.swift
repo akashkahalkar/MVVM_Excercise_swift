@@ -27,7 +27,7 @@ class NetworkManagerTest: XCTestCase {
         let expectation = self.expectation(description: "Empty Url")
         var networkError: NetworkError?
         
-        networkManager?.get(url: "", completion: { (result) in
+        networkManager?.get(modelType: [User].self, url: "", completion: { (result) in
             
             switch result {
                 
@@ -49,7 +49,7 @@ class NetworkManagerTest: XCTestCase {
         let expectation = self.expectation(description: "Invalid Url")
         var networkError: NetworkError?
         
-        networkManager?.get(url: "http://www.123456.nom", completion: { (result) in
+        networkManager?.get(modelType: [User].self, url: "http://www.123456.nom", completion: { (result) in
             
             switch result {
                 

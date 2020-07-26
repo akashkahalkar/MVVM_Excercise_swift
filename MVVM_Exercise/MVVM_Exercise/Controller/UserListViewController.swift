@@ -83,7 +83,7 @@ class UserListViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let userDetailsVC = storyboard.instantiateViewController(withIdentifier: "UserDetailsViewController") as! UserDetailsViewController
             userDetailsVC.delegate = self
-            userDetailsVC.initialize(user: user)
+            userDetailsVC.initialize(user: user, index: index)
             DispatchQueue.main.async {
                 self.present(userDetailsVC, animated: true, completion: nil)
             }
@@ -94,15 +94,12 @@ class UserListViewController: UIViewController {
     /// on successful updation reloads table view on
     /// main thres
     /// - Parameter id: id of the user for which we have to update the state
-    private func updateFavState(for id: Int) {
-        if viewModel.updateFavoriteState(id: id) {
-            Log.event("Updated favorite state for user with id: \(id)", .info)
+    private func updateFavState(for index: Int) {
+        if viewModel.updateFavoriteStateForUser(at: index) {
+            Log.event("Updated favorite state for user at index: \(index)", .info)
             DispatchQueue.main.async {
-                
-                if let row = self.viewModel.getIndex(for: id) {
-                    let indexPath = IndexPath(row: row, section: 0)
-                    self.tableView.reloadRows(at: [indexPath], with: .none)
-                }
+                let indexPath = IndexPath(row: index, section: 0)
+                self.tableView.reloadRows(at: [indexPath], with: .none)
             }
         }
     }
@@ -125,7 +122,7 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserListCell") as? UserListCell,
             let rowViewModel = viewModel.getUserRowViewModelList(at: indexPath.row) {
             
-            cell.setupUserInfo(id: rowViewModel.getUserId(),
+            cell.setupUserInfo(index: rowViewModel.getIndex(),
                                name: rowViewModel.getName(),
                                phone: rowViewModel.getUserPhone(),
                                company: rowViewModel.getcompanyName(),
@@ -133,8 +130,8 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
                                imageName: rowViewModel.getFavImage())
             
             //bind favorite button from cell to the viewmodel to update underlying data
-            cell.didTappedFavourite = {[weak self] id in
-                self?.updateFavState(for: id)
+            cell.didTappedFavourite = {[weak self] index in
+                self?.updateFavState(for: index)
             }
             return cell
         }
@@ -155,9 +152,9 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: - UserDetailsHandler delegate comformation
 
-extension UserListViewController: UserDetailsHandler {
-    func userfavoriteStateChanged(id: Int) {
+extension UserListViewController: UserStateChangeHandler {
+    func userfavoriteStateChanged(index: Int) {
         Log.event("received UserDetailsHandler delegate response", .info)
-        updateFavState(for: id)
+        updateFavState(for: index)
     }
 }

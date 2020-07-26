@@ -10,10 +10,17 @@ import Foundation
 
 class UserDetailsViewModel {
     
-    var user: User
+    private var user: User
+    private let index: Int
     
-    init(user: User) {
+    init(user: User, index: Int) {
         self.user = user
+        self.index = index
+    }
+    
+    
+    func getIndex() -> Int {
+        return index
     }
     
     func getUserId() -> Int {
@@ -41,7 +48,7 @@ class UserDetailsViewModel {
     }
     
     func getPhone() -> String {
-        if let phone = user.phone.components(separatedBy: " ").first{
+        if let phone = user.phone.components(separatedBy: " ").first {
             return phone
         }
         return user.phone

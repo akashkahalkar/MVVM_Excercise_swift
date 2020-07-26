@@ -11,10 +11,12 @@ import Foundation
 struct UserListRowViewModel {
     
     var user: User
+    var index: Int
     
-    init?(_ user: User?) {
+    init?(_ user: User?, with index: Int) {
         guard let user = user else { return nil }
         self.user = user
+        self.index = index
     }
     
     func getUserId() -> Int {
@@ -26,6 +28,17 @@ struct UserListRowViewModel {
     }
     
     func getUserPhone() -> String {
+        //let phoneNumbers = user.phone.components(separatedBy: " ")
+        
+//        if phoneNumbers.count > 1 {
+//            let primaryNumber = phoneNumbers[0]
+//            let alterNameNumber = phoneNumbers[1]
+//            if alterNameNumber.hasPrefix("x") {
+//                let startIndex = primaryNumber.index(primaryNumber.endIndex, offsetBy: -((alterNameNumber.dropFirst()).count))
+//                let alternateNumber = primaryNumber.replacingCharacters(in: startIndex..<primaryNumber.endIndex, with: alterNameNumber.dropFirst())
+//            }
+//        }
+        
         if let phone = user.phone.components(separatedBy: " ").first {
             return phone
         }
@@ -42,6 +55,10 @@ struct UserListRowViewModel {
     
     func getFavImage() -> String {
         user.fav ? "star.fill" : "star"
+    }
+    
+    func getIndex() -> Int {
+        return index
     }
 }
 

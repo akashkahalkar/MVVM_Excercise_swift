@@ -9,7 +9,7 @@
 
 import Foundation
 
-protocol UserStateChangeHandler: class {
+protocol UserStateChangeHandler: AnyObject {
     func userfavoriteStateChanged(index: Int)
 }
 
